@@ -16,7 +16,7 @@ dotenv.config();
 
 const __dirname = path.resolve();
 app.use(cors({
-    origin: 'http://localhost:5173',
+    origin: process.env.CLIENT_URL,
     methods: ['GET', 'POST', 'PUT', 'DELETE',"PATCH"], // Allowed HTTP methods
     credentials: true, // If you need to include cookies or authentication headers
   }));
