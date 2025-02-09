@@ -15,6 +15,8 @@ import PurchaseSuccessPage from "./pages/PurchaseSuccessPage";
 import PurchaseCancelPage from "./pages/PurchaseCanclePage";
 
 function App() {
+  console.log("Current mode:", import.meta.env.MODE);
+
   const { user,checkAuth,checkingAuth } = useUserStore();
   const{getCartItems , total , subtotal} = useCartStore();
 
