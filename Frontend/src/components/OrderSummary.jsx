@@ -32,7 +32,7 @@ const OrderSummary = () => {
     }
   };
 
-  console.log(total, subtotal, savings, isCouponApplied);
+ 
 
   return (
     <motion.div

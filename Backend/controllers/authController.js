@@ -123,8 +123,8 @@ export const refreshToken = async (req, res) => {
     const decoded = jwt.verify(refreshToken, process.env.REFRESH_TOKEN_SECRET);
     const storedToken = await redis.get(`refreshToken:${decoded.userId}`);
     
-    if (refreshToken !== storedToken) {
-      return res.status(401).send("Unauthorized");
+    if (storedToken !== refreshToken ) {
+      return res.status(401).json({message:"Invalid Refresh Token"});
     }
     const accessToken = jwt.sign(
       { userId: decoded.userId },
@@ -141,6 +141,7 @@ export const refreshToken = async (req, res) => {
 
     return res.status(200).json({message:"Access token refrehed successfully"})
   } catch (error) {
+    console.log(error);
     res.send({ message: "Error in refrehToken", error: error.message });
   }
 };

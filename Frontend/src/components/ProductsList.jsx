@@ -6,7 +6,6 @@ const ProductsList = () => {
 	const {  toggleFeaturedProduct, products,deleteProduct } = useProducStore();
   
 
-	console.log("products", products);
 
 	return (
 		<motion.div

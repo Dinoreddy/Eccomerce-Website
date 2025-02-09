@@ -13,7 +13,7 @@ const LoginPage = () => {
   const {login,loading} = useUserStore()
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(email,password);
+   
     login({email,password});
   }
   return (

@@ -32,7 +32,7 @@ function App() {
   },[getCartItems,user]);
 
   
-  console.log(user?.role)
+  
 if(checkingAuth) return <LoadingSpinner/>
   return (
     <>

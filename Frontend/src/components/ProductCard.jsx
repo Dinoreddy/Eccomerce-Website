@@ -8,8 +8,8 @@ const ProductCard = ({ product }) => {
   const { addToCart, cart } = useCartStore();
   const handleAddToCart = () => {
     addToCart(product);
-    console.log("cart product ", product);
-    console.log(cart);
+    
+   
   };
 
   return (

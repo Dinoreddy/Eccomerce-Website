@@ -10,7 +10,7 @@ import GiftCouponCard from "../components/GiftCouponCard";
 
 const CartPage = () => {
 	const { cart } = useCartStore();
-	console.log("cart", cart);
+	
 
 	return (
 		<div className='py-8 md:py-16'>
