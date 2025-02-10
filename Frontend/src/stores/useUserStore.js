@@ -38,16 +38,32 @@ export const useUserStore = create((set, get) => ({
     }
   },
   checkAuth: async () => {
-    set({ checkingAuth: true });
+    // Use set with a function to get the most recent state
+    set((state) => ({ checkingAuth: true }));
+    
     try {
+      console.log("Checking authentication...");
       const res = await axios.get("/auth/getprofile");
-      set({ user: res.data, checkingAuth: false });
-        console.log("after checking auth",checkingAuth)
+      console.log("Profile data:", res.data);
+      
+      // Use set with a function to ensure you're working with the latest state
+      set((state) => ({ 
+        user: res.data, 
+        checkingAuth: false 
+      }));
+      
+      // If you want to log the current state, use get()
+      console.log("Current state after auth check:", get());
     } catch (error) {
-      set({ checkingAuth: false, user: null });
-      console.log(error.response.data.message);
+      console.error("Auth check error:", error.response);
+      
+      set((state) => ({ 
+        checkingAuth: false, 
+        user: null 
+      }));
     }
   },
+
   logout: async () => {
     try {
       await axios.post("/auth/logout");
@@ -59,7 +75,7 @@ export const useUserStore = create((set, get) => ({
   },
   refreshToken: async () => {
     // Prevent multiple simultaneous refresh attempts
-
+    
     set({ checkingAuth: true });
     try {
       const response = await axios.post("/auth/refreshToken");
@@ -69,8 +85,9 @@ export const useUserStore = create((set, get) => ({
     } catch (error) {
       set({ user: null, checkingAuth: false });
       throw error;
-    }
-  },
+    }finally{
+      set({ checkingAuth: false });
+  }}
 }));
 
 let refreshPromise = null;

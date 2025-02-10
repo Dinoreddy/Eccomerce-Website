@@ -18,15 +18,15 @@ function App() {
   console.log("Current mode:", import.meta.env.MODE);
 
   const { user,checkAuth,checkingAuth } = useUserStore();
-  const{getCartItems , total , subtotal} = useCartStore();
+  const{getCartItems } = useCartStore();
 
   useEffect(() => {
     
      checkAuth();
     
-  }, [checkAuth]);
+  }, []);
 
-
+  console.log(user)
   useEffect(() => {
    if(!user) return;
    getCartItems();

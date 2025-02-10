@@ -9,7 +9,7 @@ const Navbar = () => {
 	 const { user,logout } = useUserStore();
 	 const isAdmin = user?.role === "Admin";
 	 const { cart } = useCartStore();
-	 
+	 console.log(user)
     
    
 

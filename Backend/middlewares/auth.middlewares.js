@@ -28,7 +28,7 @@ export const protectedRoute = async(req,res,next)=>{
     throw(error);
    }
 }catch(error){
-    console.log("Error in the Protected route controller"+error.message);
+    console.log("Error in the Protected route controller",error.message);
     return res.status(401).json({message:"Unauthorized invalid access token"})
 }
 
