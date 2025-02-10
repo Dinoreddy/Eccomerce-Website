@@ -19,7 +19,8 @@ app.use(
   cors({
     origin: process.env.CLIENT_URL,
     methods: ["GET", "POST", "PUT", "DELETE", "PATCH"], // Allowed HTTP methods
-    credentials: true, // If you need to include cookies or authentication headers
+    credentials: true,
+     
   })
 );
 

@@ -118,13 +118,13 @@ export const refreshToken = async (req, res) => {
   try {
     const refreshToken = req.cookies.refreshToken;
     if (!refreshToken) {
-      return res.status(401).json({message:"No Refresh Token Found"});
+      return res.json({message:"No Refresh Token Found"});
     }
     const decoded = jwt.verify(refreshToken, process.env.REFRESH_TOKEN_SECRET);
     const storedToken = await redis.get(`refreshToken:${decoded.userId}`);
     
     if (storedToken !== refreshToken ) {
-      return res.status(401).json({message:"Invalid Refresh Token"});
+      return res.json({message:"Invalid Refresh Token"});
     }
     const accessToken = jwt.sign(
       { userId: decoded.userId },

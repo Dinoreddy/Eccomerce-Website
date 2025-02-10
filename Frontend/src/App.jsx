@@ -24,7 +24,7 @@ function App() {
     
      checkAuth();
     
-  }, []);
+  }, [checkAuth]);
 
   console.log(user)
   useEffect(() => {
