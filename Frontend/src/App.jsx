@@ -34,7 +34,7 @@ function App() {
   },[getCartItems,user]);
 
   
-  
+  console.log("checking auth",checkingAuth)
 if(checkingAuth) return <LoadingSpinner/>
   return (
     <>
